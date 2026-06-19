@@ -139,7 +139,7 @@ Postgresql Database
 
 ## Database
 
-* MySQL
+* Postgresql
 
 ---
 
