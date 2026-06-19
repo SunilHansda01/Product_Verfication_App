@@ -1,0 +1,45 @@
+<div class="card border-0 shadow-sm mx-auto mt-5" style="max-width: 650px;">
+  <div class="card-body p-4 p-md-5">
+    <div class="text-center mb-4">
+      <div class="d-inline-flex align-items-center justify-content-center bg-primary bg-opacity-10 text-primary rounded-circle mb-3" style="width: 60px; height: 60px;">
+        <i class="bi bi-cloud-arrow-up fs-3"></i>
+      </div>
+      <h3 class="fw-bold text-dark m-0">Upload Products Data</h3>
+      <p class="text-muted small mt-1">Select and parse your company inventory records via a standard CSV template.</p>
+    </div>
+
+    <div class="mb-4">
+      <label class="form-label fw-semibold text-secondary small mb-2">Select CSV File</label>
+      <div class="input-group">
+        <span class="input-group-text bg-light text-secondary border-end-0">
+          <i class="bi bi-filetype-csv fs-5"></i>
+        </span>
+        <input 
+          type="file" 
+          accept=".csv" 
+          class="form-control border-start-0 ps-1" 
+          (change)="onFileSelected($event)">
+      </div>
+      <div class="form-text text-muted mt-2">
+        <i class="bi bi-info-circle me-1"></i> Only pristine .csv formatting spreads are certified for ingest operations.
+      </div>
+    </div>
+
+    <button 
+      class="btn btn-primary w-100 py-2.5 fw-semibold d-flex align-items-center justify-content-center gap-2 shadow-sm" 
+      (click)="uploadFile()">
+      <i class="bi bi-box-arrow-in-up"></i>
+      Upload Products
+    </button>
+
+    <div *ngIf="successMessage" class="alert alert-success d-flex align-items-center gap-2 mt-4 border-0 shadow-sm" role="alert">
+      <i class="bi bi-check-circle-fill fs-5 text-success"></i>
+      <div class="fw-medium small">{{ successMessage }}</div>
+    </div>
+
+    <div *ngIf="errorMessage" class="alert alert-danger d-flex align-items-center gap-2 mt-4 border-0 shadow-sm" role="alert">
+      <i class="bi bi-exclamation-triangle-fill fs-5 text-danger"></i>
+      <div class="fw-medium small">{{ errorMessage }}</div>
+    </div>
+  </div>
+</div>

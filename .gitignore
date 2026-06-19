@@ -33,6 +33,7 @@ env/
 ENV/
 env.bak/
 venv.bak/
+node_modules
 
 # Environment variables and secrets
 .env

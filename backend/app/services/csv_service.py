@@ -6,7 +6,7 @@ from sqlalchemy.orm import Session
 from app.models.product import Product
 
 
-def upload_csv(file, db: Session):
+def upload_csv_service(file, db: Session):
 
     df = pd.read_csv(file.file)
 
