@@ -49,3 +49,8 @@ node_modules
 # OS files
 .DS_Store
 Thumbs.db
+
+
+#image folder
+uploads/*
+!uploads/.gitkeep
