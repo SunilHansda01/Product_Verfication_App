@@ -14,7 +14,7 @@ The solution is built using:
 
 * Backend: FastAPI
 * Frontend: Angular
-* Database: MySQL
+* Database: Postgresql
 * Authentication: JWT-based authentication
 * Authorization: Role-Based Access Control (Admin / Operator)
 
@@ -177,7 +177,7 @@ project-root/
 ## Prerequisites
 
 * Python 3.12+
-* MySQL Server
+* Postgresql Server
 
 ---
 
@@ -229,7 +229,7 @@ Create a `.env` file inside the backend folder.
 Example:
 
 ```env
-DATABASE_URL=mysql+pymysql://root:password@localhost/product_verification
+DATABASE_URL=Postgresql+pyPostgresql://root:password@localhost/product_verification
 
 SECRET_KEY=your-secret-key
 
@@ -434,7 +434,7 @@ Potential future improvements:
 ✔ Reporting
 ✔ FastAPI Backend
 ✔ Angular Frontend
-✔ MySQL Database
+✔ Postgresql Database
 ✔ API Documentation
 
 ---
