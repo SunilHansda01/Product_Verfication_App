@@ -52,5 +52,4 @@ Thumbs.db
 
 
 #image folder
-uploads/*
-!uploads/.gitkeep
+backend/uploads/images/

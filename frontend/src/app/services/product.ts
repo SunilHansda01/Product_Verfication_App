@@ -16,19 +16,29 @@ export class ProductService {
 
   uploadProducts(file: File) {
 
-    const formData =
-      new FormData();
+    const formData = new FormData();
 
     formData.append(
       'file',
       file
     );
 
+    const token =
+      localStorage.getItem(
+        'access_token'
+      );
+
+    const headers =
+      new HttpHeaders({
+        Authorization:
+          `Bearer ${token}`
+      });
+
     return this.http.post<any>(
       `${this.apiUrl}/products/upload`,
-      formData
+      formData,
+      { headers }
     );
-
   }
 
   verifyProduct(

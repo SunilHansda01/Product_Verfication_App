@@ -4,6 +4,7 @@ from fastapi import APIRouter
 from fastapi import Depends
 
 from sqlalchemy.orm import Session
+from sqlalchemy import func
 
 from app.db.database import get_db
 from app.models.verification_log import VerificationLog
@@ -25,14 +26,25 @@ def get_report(
     db: Session = Depends(get_db)
 ):
 
+    # data = (
+    #     db.query(VerificationLog)
+    #     .filter(
+    #         VerificationLog.verified_at >= start_date,
+    #         VerificationLog.verified_at <= end_date
+    #     )
+    #     .all()
+    # )
+    
     data = (
-        db.query(VerificationLog)
-        .filter(
-            VerificationLog.verified_at >= start_date,
-            VerificationLog.verified_at <= end_date
+    db.query(VerificationLog)
+    .filter(
+        func.date(VerificationLog.verified_at).between(
+            start_date,
+            end_date
         )
-        .all()
     )
+    .all()
+)
 
     return {
         "generated_by": current_user.username,

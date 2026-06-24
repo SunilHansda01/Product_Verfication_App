@@ -1,7 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductService } from '../../services/product';
-import { AuthService } from '../../services/auth'; // Point this directly to your auth file location
+import { AuthService } from '../../services/auth'; 
 
 @Component({
   selector: 'app-upload-products',
@@ -17,6 +17,7 @@ export class UploadProducts {
 
   private productService = inject(ProductService);
   private authService = inject(AuthService);
+  private cdr = inject(ChangeDetectorRef);
 
   onFileSelected(event: Event) {
     const input = event.target as HTMLInputElement;
@@ -29,7 +30,7 @@ export class UploadProducts {
     this.successMessage = '';
     this.errorMessage = '';
 
-    // 🔒 Guard Clause: Assert Role Clearances Prior to Submission Execution
+    // Guard Clause: Assert Role Clearances Prior to Submission Execution
     const userRole = this.authService.getRole();
     if (userRole === 'operator') {
       this.errorMessage = 'You are not authorized to upload product records. This activity requires an Administrative role.';
@@ -46,6 +47,7 @@ export class UploadProducts {
       .subscribe({
         next: (response) => {
           this.successMessage = response.message || 'Products uploaded successfully';
+          this.cdr.markForCheck();
         },
         error: (error) => {
           this.errorMessage = error.error?.detail || 'Upload failed';

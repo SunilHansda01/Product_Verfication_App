@@ -44,7 +44,7 @@ export class AuthService {
     return !!this.getToken();
   }
 
-  // 👇 New: Decodes JWT payload properties safely
+  // Decodes JWT payload properties safely
   getRole(): string | null {
     const token = this.getToken();
     if (!token) return null;
@@ -53,7 +53,7 @@ export class AuthService {
       // Decode the token structure
       const decoded: any = jwtDecode(token);
 
-      // Adjust property path ('role', 'user_role', etc.) to match your JWT payload architecture
+      // Adjust property path ('role', 'user_role', etc.) to match the JWT payload architecture
       return decoded.role || decoded.user_role || null;
     } catch (error) {
       console.error('Failed to decode security token:', error);

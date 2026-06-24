@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "start": "concurrently \"cd backend && uvicorn app.main:app --reload\" \"cd frontend && ng serve\""
+  }
+}

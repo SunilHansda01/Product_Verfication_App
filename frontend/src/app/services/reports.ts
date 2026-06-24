@@ -12,7 +12,7 @@ export class ReportService {
 
   getReport(startDate: string, endDate: string) {
 
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('access_token');
 
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`
